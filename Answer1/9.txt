@@ -1,0 +1,38 @@
+
+//大爷的……负数居然是false，害我WA了一次
+
+public class Solution {
+    public boolean isPalindrome(int x) {
+        if (x < 0) {
+            return false;
+        }
+        if (x == 0) {
+            return true;
+        } else {
+            int temp = reverse(x);
+            if (temp == x)
+                return true;
+            else return false;  
+        }
+            
+    }
+    
+    public int reverse(int x) {
+        long temp = 0;
+        
+        while(x != 0) {
+            temp = temp * 10 + (x % 10);
+            x /= 10;
+        }
+        
+        if (temp > Integer.MAX_VALUE || temp < Integer.MIN_VALUE) {
+            return 0;
+        }
+        
+        return (int)temp;
+        
+        
+        
+    }
+    
+}
