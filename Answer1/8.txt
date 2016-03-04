@@ -1,0 +1,28 @@
+
+//先判断，再乘十倍，好郁闷……为什么想得到写不出来…………还是代码写得少啊……
+
+
+public class Solution {
+    public int myAtoi(String str) {
+        str = str.trim();
+		int result = 0;
+		boolean flag= false;
+		
+		for (int i = 0; i < str.length(); i++) {
+			char c = str.charAt(i);
+			if (i == 0 && (c == '+' || c == '-')) {				
+				flag = c == '+'? true: false;
+			} else if (c >= '0' && c <= '9'){
+				if (result > (Integer.MAX_VALUE- (c - '0') / 10) {
+					return flag == true? result:-result;
+				}
+				result *= 10;
+				result += c - '0';
+				
+			} else {
+				return flag == true? result:-result;
+			}
+		}
+		return flag == true? result:-result;
+    }
+}

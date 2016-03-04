@@ -1,0 +1,20 @@
+
+//用long，才能存储比int范围大的数，然后再判断是不是int范围内！
+//判断是否越界，如果是指针还要判断是不是空！！面试的时候似乎很注重这个来着！！！！
+
+
+public class Solution {
+    public int reverse(int x) {
+        long temp = 0;
+        
+        while(x != 0) {
+            temp = 10 * temp + (x % 10);
+            x /= 10;
+        }
+        
+        if (temp > Integer.MAX_VALUE || temp < Integer.MIN_VALUE) {
+            return 0;
+        }
+        return (int)temp;
+    }
+}

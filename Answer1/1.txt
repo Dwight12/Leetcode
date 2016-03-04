@@ -1,0 +1,18 @@
+
+//这种题居然还是中档……我日…………还不会超时，看来是我想多了
+
+public class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int[] arr = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i+1; j < nums.length; j++) {
+                if (nums[i] + nums[j] == target) {
+                    arr[0] = i+1;
+                    arr[1] = j+1;
+                    break;
+                }
+            }
+        }
+        return arr;
+    }
+}

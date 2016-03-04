@@ -1,0 +1,44 @@
+
+//一开始看错了……以为是逆序，想了半天，顺序的话挺简单的，每次保留进位就好了，c++的指针比java的好用，就用c++写了
+//其实我想逆序的话，先把两个链表倒置，应该就可以按照顺序的来做了
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    ListNode* addTwoNumbers(ListNode* l1, ListNode* l2) {
+        ListNode some(0);
+        ListNode* p = &some;
+        
+        int count = 0;
+        
+        while(l1 || l2) {
+            int val = count + (l1 ? l1->val : 0) + (l2 ? l2->val : 0);
+            count = val / 10;
+            val = val % 10;
+            
+            p->next = new ListNode(val);
+            p = p->next;
+            
+            if (l1) {
+                l1 = l1->next;
+            }
+            if (l2) {
+                l2 = l2->next;
+            }
+        }
+        
+        if (count > 0) {
+            p->next = new ListNode(count);
+            p = p->next;
+        }
+        return some.next;
+    }
+};
+
