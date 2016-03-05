@@ -1,0 +1,80 @@
+
+卧槽怎么那么废写个队列那么磨磨唧唧…………
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+        
+		//只有根节点的情况
+        if (!isSameNode(p,q)) return false;
+        //根节点为null的情况
+        if (!p && !q) return true;
+        
+        
+        queue<TreeNode *> p1,p2;
+        
+        p1.push(p);
+        p2.push(q);
+        while(!p1.empty() && !p2.empty()) {
+            TreeNode* temp1 = p1.front();
+            TreeNode* temp2 = p2.front();
+            p1.pop();
+            p2.pop();
+            
+            if (!isSameNode(temp1->left,temp2->left)) return false;
+            
+            if (temp1->left != NULL && temp2->left != NULL) {
+                p1.push(temp1->left);
+                p2.push(temp2->left);
+            } 
+            
+            if (!isSameNode(temp1->right,temp2->right)) return false;
+            
+            if (temp1->right != NULL && temp2->right != NULL) {
+                p1.push(temp1->right);
+                p2.push(temp2->right);
+            }
+        }
+        return true;
+    }
+    
+    bool isSameNode(TreeNode* p, TreeNode* q) {
+        if (!p && !q) 
+            return true;
+        
+        if ((p && !q) || (!p && q) || (p->val != q->val))
+            return false;
+        
+        return true;
+    }
+};
+
+//递归写法，其实也就是把isSameNode函数放进isSameTree中来
+
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    bool isSameTree(TreeNode* p, TreeNode* q) {
+           if (!p && !q) return true;
+           if ((p && !q) || (!p && q) || (p->val != q->val)) return false;
+            return (isSameTree(p->left,q->left) && isSameTree(p->right,q->right));
+        
+    }
+};
