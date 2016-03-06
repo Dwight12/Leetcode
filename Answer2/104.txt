@@ -1,0 +1,25 @@
+/**
+ * Definition for a binary tree node.
+ * struct TreeNode {
+ *     int val;
+ *     TreeNode *left;
+ *     TreeNode *right;
+ *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    int maxDepth(TreeNode* root) {
+        
+        if (root == NULL) return 0;
+        
+        int l = maxDepth(root->left);
+        int r = maxDepth(root->right);
+        return l > r ? l+1:r+1; 
+        
+      
+    }
+};
+
+
+这是递归DFS，还有用队列的BFS和用栈的BFS，用栈的BFS有点没看懂，改天画个图研究下
