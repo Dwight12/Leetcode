@@ -1,0 +1,9 @@
+
+//排序，把数组中间的数发给他，复杂度O(NlgN)……无聊
+
+public class Solution {
+    public int majorityElement(int[] nums) {
+            Arrays.sort(nums);
+            return nums[nums.length/2];
+    }
+}
