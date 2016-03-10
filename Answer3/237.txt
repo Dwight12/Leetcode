@@ -1,0 +1,19 @@
+
+这是一个什么玩意？你特么在逗我啊，到最后才看清楚是，传一个点进去，然后跑一下这个函数，就相当于删掉这个点了，我尼玛直接我这个点后面的点覆盖这个点不就好了？这也算题？
+
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     ListNode *next;
+ *     ListNode(int x) : val(x), next(NULL) {}
+ * };
+ */
+class Solution {
+public:
+    void deleteNode(ListNode* node) {
+        if (node == NULL) return ;
+        node->val = node->next->val;
+        node->next = node->next->next;
+    }
+};

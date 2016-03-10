@@ -1,0 +1,16 @@
+
+//一开始还没想到，其实就是先排序，再从0开始相邻之间两两异或，如果结果是0，就是有这个数，复杂度O(NlgN)，还好，下标用i-1,不然会RE的（数组下标超出了）
+
+
+public class Solution {
+    public boolean containsDuplicate(int[] nums) {
+        Arrays.sort(nums);
+        for (int i = 1; i < nums.length; i++) {
+            int num = nums[i-1] ^ nums[i];
+            if (num == 0)
+                return true;
+        }
+        
+        return false;
+    }
+}
