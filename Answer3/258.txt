@@ -1,0 +1,28 @@
+
+公式为dr(n) = 0  if n = 0
+			  9  if n != 0 & n = 0(mod 9)
+			  n mod 9 if n != 0(mod 9)
+
+公式：（num-1）%9 + 1；
+
+假设num为一个五位数，num = (a + b + c + d + e) + (a * 9999 + b * 999 + c * 99 + d * 9)，将num对9取余后，结果为a + b + c + d + e。
+
+反复执行对9取余的操作，最终得到1-9之间的结果，
+
+考虑0和9的情况，因此是（num-1）%9 +1。
+			  
+class Solution {
+public:
+    int addDigits(int num) {
+        return (num - 1) % 9 + 1;
+    }
+};
+
+非递归
+class Solution {
+public:
+    int addDigits(int num) {
+        while(num / 10) num = num / 10 + num % 10;
+		return num;
+    }
+};

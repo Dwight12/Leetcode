@@ -1,0 +1,23 @@
+class Solution {
+public:
+    vector<int> singleNumber(vector<int>& nums) {
+        int some = nums[0];
+        for (int i = 1; i < nums.size(); i++) {
+            some ^= nums[i];
+        }
+        int j = 1;
+        while(!(some & j)) j *= 2;
+        int num1 = 0,num2 = 0;
+        for (int i = 0; i < nums.size(); i++) {
+            if (nums[i] & j) {
+                num1 ^= nums[i];
+            } else {
+                num2 ^= nums[i];
+            }
+        }
+        vector<int> arr(2,0);
+        arr[0] = num1;
+        arr[1] = num2;
+        return arr;
+    }
+};

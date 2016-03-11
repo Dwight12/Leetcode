@@ -1,0 +1,22 @@
+public class Solution {
+    public boolean isAnagram(String s, String t) {
+        int[] arr = new int[26];
+        for (int i = 0; i < 26; i++) {
+            arr[i] = 0;
+        }
+        for (int i = 0; i < s.length(); i++) {
+            arr[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < t.length(); i++) {
+            arr[t.charAt(i) - 'a']--;
+        }
+        for (int i = 0; i < 26; i++) {
+            if (arr[i] != 0) return false;
+        }
+        return true;
+        
+    }
+}
+
+
+java用的比c艹爽多了，题很傻逼，统计字符串里每个字母的次数就行。

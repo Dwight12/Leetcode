@@ -1,0 +1,18 @@
+
+//将数组里的值与0~n的数进行异或，留下来的那个就是缺少的~~~
+
+
+public class Solution {
+    public int missingNumber(int[] nums) {
+        
+        int res = 0;
+        
+        
+        
+        for (int i = 1; i <= nums.length; i++) {
+            res = res ^ nums[i-1] ^ i;
+        }
+        
+        return res;
+    }
+}
