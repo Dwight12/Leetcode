@@ -1,0 +1,17 @@
+
+//递归过不了，要用迭代
+
+public class Solution {
+    public int climbStairs(int n) {
+        int sum = 0;
+        int stepone = 0;
+        int steptwo = 1;
+        for (int i = 0; i < n; i++) {
+            sum = stepone+steptwo;
+            stepone = steptwo;
+            steptwo = sum;
+        }
+        
+        return sum;
+    }
+}
