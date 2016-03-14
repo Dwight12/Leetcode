@@ -1,0 +1,11 @@
+//power of three
+
+//直接用Math.log，简单粗暴
+//Math.rint返回最接近参数并且是整数的double类型
+
+public class Solution {
+    public boolean isPowerOfThree(int n) {
+        double result = Math.log(n) / Math.log(3);
+        return Math.abs(result - Math.rint(result)) < 0.0000000001;
+    }
+}
