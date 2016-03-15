@@ -1,0 +1,39 @@
+
+//基本功还是略差……有两种方法，一种是新建一个头，然后有不同的就贴上去，第二种就是这个，头不变，只挑选不同的结点接到后面
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode deleteDuplicates(ListNode head) {
+        
+        if (head == null || head.next == null)
+            return head;
+        
+       ListNode c = head.next;
+       ListNode p = head;
+       
+       while(c != null) {
+           if (p.val == c.val) {
+               p.next = c.next;
+               c = c.next;
+                continue;
+           }
+               p = c;
+               c = c.next;
+           
+           
+       }
+        
+        return head;
+        
+        
+    }
+   
+    
+}
