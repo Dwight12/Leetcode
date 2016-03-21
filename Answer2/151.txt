@@ -1,0 +1,22 @@
+
+//这道题最好的方法是，先逆转整个字符串，然后将其中的每个单词挨个逆转
+//但是java的String相当蛋疼……所以用StringBuilder，先用split分成多个子字符串，然后从后向前挨个用StringBulider来append
+
+
+public class Solution {
+    public String reverseWords(String s) {
+        if (s.length() == 0 || s.trim().equals(""))
+            return "";
+        
+        
+     String[] arr = s.split(" ");
+     StringBuilder sb = new StringBuilder();
+     
+     for (int i = arr.length-1; i >= 0; i--) {
+         if (!arr[i].trim().equals(""))
+            sb.append(arr[i]).append(" ");
+     }
+     
+     return sb.substring(0,sb.length()-1);
+    }
+}

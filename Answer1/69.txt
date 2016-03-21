@@ -1,0 +1,13 @@
+//牛顿迭代法，两次结果之间的差太小了则得出结果，最后转化为int
+
+public class Solution {
+    public int mySqrt(int x) {
+        double pre = 0;
+        double cur = x;
+        while(Math.abs(cur - pre) > 0.000000001) {
+            pre = cur;
+            cur = (pre + x/pre) / 2;
+        }
+        return (int)cur;
+    }
+}
