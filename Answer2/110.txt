@@ -1,0 +1,42 @@
+//基本的递归，把高度和是否平衡结合起来
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public boolean isBalanced(TreeNode root) {
+        if (check(root) == -1)
+            return false;
+        else
+            return true;
+        
+        
+    }
+    
+    public int check(TreeNode root) {
+        if (root == null)
+        return 0;
+        
+        int left = check(root.left);
+        if (left == -1) {
+            return -1;
+        }
+        
+        int right = check(root.right);
+        if (right == -1) {
+            return -1;
+        } 
+        
+        int dif = left - right;
+        if (Math.abs(dif) > 1)
+            return -1;
+        else
+            return Math.max(left,right)+1;
+    }
+}
