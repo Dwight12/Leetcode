@@ -1,0 +1,27 @@
+用数组表示二进制的数，加一，就是要考虑下有没有多进一位，要不要开个新数组
+
+
+public class Solution {
+    public int[] plusOne(int[] digits) {
+        int carry = 1;
+        int len = digits.length;
+        for (int i = len-1; i >= 0; i--) {
+            int sum = digits[i] + carry;
+            digits[i] = sum % 10;
+            carry = sum / 10;
+            
+        }
+        
+        if (carry == 0)
+            return digits;
+            
+        int[] newDigits = new int[len+1];
+        newDigits[0] = 1;
+        
+        for (int i = 1; i < len+1; i++) {
+            newDigits[i] = digits[i-1];
+        }
+        
+        return newDigits;
+    }
+}
