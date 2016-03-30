@@ -1,0 +1,36 @@
+root == null的时候应该返回最大值而不是0，有点欠考虑了，而且要加上left和right都是null的判断，不然后面的min函数就会出错了
+
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public int minDepth(TreeNode root) {
+        
+        if (root == null)
+            return 0;
+        
+        return check(root);
+    }
+    
+    public int check(TreeNode root) {
+        if (root == null)
+            return Integer.MAX_VALUE;
+        
+        if (root.left == null && root.right == null)
+            return 1;
+        
+        int left = check(root.left);
+        int right = check(root.right);
+        
+        return 1 + Math.min(left, right);
+        
+        
+        
+    }
+}
