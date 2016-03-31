@@ -1,0 +1,54 @@
+判断链表相交…简直不要太熟，记得判断A,B是不是null
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        
+        if (headA == null || headB == null)
+            return null;
+        
+        
+        ListNode newHeadB = headB;
+        while(newHeadB.next != null) newHeadB = newHeadB.next;
+        
+        newHeadB.next = headB;
+        
+        ListNode slow = headA, quick = headA; 
+        boolean flag = false;
+        while(quick.next != null && quick.next.next != null) {
+            slow = slow.next;
+            quick = quick.next.next;
+            
+            if (slow == quick) {
+                flag = true;
+                break;
+            }
+        }
+        
+        if (!flag) {
+            newHeadB.next = null;
+            return null;
+        }
+            
+            
+            
+        ListNode newSlow = headA;
+        while(newSlow != slow) {
+            newSlow = newSlow.next;
+            slow = slow.next;
+        }
+        
+        newHeadB.next = null;
+        return slow;
+    }
+}
