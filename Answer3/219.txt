@@ -1,0 +1,31 @@
+用hashmap，以下标为value，值为key，如果没有出现过就加入，如果出现过，就先看看是不是符合题意，如果符合则结束，不符合的话就更新该结点，
+即抛弃前一个结点，存储后一个结点，因为前一个结点无论如何都不能满足条件了
+
+public class Solution {
+    
+    public boolean containsNearbyDuplicate(int[] nums, int k) {
+        /*nums中下标为value，值为key*/
+        HashMap map = new HashMap();
+        int len = nums.length;
+        for (int i = 0; i < len; i++) {
+            int key = nums[i];
+            if (map.containsKey(key)) {
+                int num = (int)map.get(key);
+                if (Math.abs(i-num) <= k) {
+                    return true;   
+                } else {
+                    map.remove(key);
+                    map.put(key,i);
+                }
+                
+            } else {
+                map.put(key,i);
+            }
+        
+        }
+        
+        return false;
+        
+        
+    }
+}
