@@ -1,0 +1,42 @@
+//采用两个指针，第一个指针先移动n步，然后两个指针一起移动，第一个指针移动到末尾时，第二个指针的next刚好是倒数第n个
+//注意移动n步后为null，则要删除的是头指针
+
+
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) { val = x; }
+ * }
+ */
+public class Solution {
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        
+        if (head == null || head.next == null) {
+            return null;
+        }
+        
+        ListNode first = head;
+        ListNode second = head;
+        
+        for (int i = 0; i < n; i++) {
+            first = first.next;
+        }
+        
+        if (first == null) {
+            return head.next;
+        }
+        
+        while(first.next != null) {
+            first = first.next;
+            second = second.next;
+        }
+        
+        second.next = second.next.next;
+        
+        return head;
+        
+        
+    }
+}
