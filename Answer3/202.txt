@@ -1,0 +1,22 @@
+//用一个hashSet来判断是否曾经出现过，若出现过，则重复，返回false
+
+
+public class Solution {
+    public boolean isHappy(int n) {
+        
+        Set<Integer> set = new HashSet<Integer>();
+        
+        int sum;
+        while(n != 1) {
+            sum = 0;
+            while(n != 0) {
+                sum += (n % 10) * (n % 10);
+                n /= 10;
+            }
+            if (set.contains(sum)) return false;
+            set.add(sum);
+            n = sum;
+        }
+        return true;
+    }
+}
