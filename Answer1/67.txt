@@ -1,0 +1,41 @@
+//´¿Ä£ÄâÌâ
+
+public class Solution {
+    public String addBinary(String a, String b) {
+        if (a.length() < b.length()) {
+            String temp = a;
+            a = b;
+            b = temp;
+        }
+        
+        int posA = a.length()-1;
+        int posB = b.length()-1;
+        
+        int carry = 0;
+        String str = "";
+        
+        while(posB >= 0) {
+            int sum = (int)(a.charAt(posA) - '0') + (int)(b.charAt(posB) - '0') + carry;
+            str = String.valueOf(sum % 2) + str;
+            carry = sum / 2;
+            posA--;
+            posB--;
+        }
+        
+        while(posA >= 0) {
+            int sum = (int)(a.charAt(posA) - '0') + carry;
+            str = String.valueOf(sum % 2) + str;
+            carry = sum / 2;
+            posA--;
+        }
+        
+        if (carry == 1)
+            str = "1" + str;
+        
+        return str;
+        
+        
+    }
+    
+    
+}
